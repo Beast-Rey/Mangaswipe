@@ -1,0 +1,152 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  a {
+    @apply block;
+  }
+  h1,
+  h2,
+  h3,
+  span {
+    @apply font-fred font-bold dark:text-white;
+  }
+
+}
+
+@layer components {
+  .hoverEffect {
+    @apply hover:text-[#EFC416]
+  }
+  .mangaHead {
+    @apply cursor-pointer mb-4 border-l-4 border-[#EFC416] indent-[4px] font-bold w-fit transition duration-1000 ease-out hover:ease-in hover:bg-[#EFC416] hover:w-fit;
+  }
+  .mangaSpan {
+    @apply mb-4 underline decoration-[#EFC416] decoration-2 underline-offset-8 cursor-pointer;
+  }
+
+  .EditorBtn {
+    @apply bg-inherit border-[#FFFFFF] border-[3px] text-sm font-bold text-white w-24 h-8 uppercase font-fred hover:border-[#313131] hover:text-black;
+  }
+
+  /* carousel */
+  .embla__button {
+    @apply touch-manipulation translate-y-2/4 z-[1] border-0 fill-[#EFC416] h-[30px] w-[30px] outline-0 cursor-pointer bg-transparent;
+  }
+
+  .embla__button__svg {
+    @apply w-full h-full;
+  }
+  .embla__button:disabled {
+    @apply cursor-default opacity-[0.3];
+  }
+
+  /* Login register reset */
+  .page__section {
+    @apply flex h-[31.25rem] w-[23.4375rem] mx-auto border-[#EFC416] border-4 mt-24 font-fred md:w-[29.6875rem] lg:w-[800px] xl:w-[1000px];
+  }
+
+  .page__div {
+    @apply w-[100%] h-[100%] px-[2rem] bg-[#131415] text-white md:px-[75px] lg:px-[20px] lg:w-[50%] xl:px-[75px];
+  }
+
+  .form__style {
+    @apply flex flex-col justify-evenly h-[300px];
+  }
+  .form__input {
+    @apply placeholder:text-sm focus:outline-none w-[300px] h-[32px] border-b-2 bg-black border-[#EFC416];
+  }
+  .form__btn1 {
+    @apply rounded-full bg-[#EFC416] w-[180px] text-[black] h-[42px];
+  }
+
+  .form__btn2 {
+    @apply rounded-full border-[#EFC416] text-[#EFC416] border-[2px] w-[120px] h-[42px];
+  }
+
+  /* Skeleton */
+  .skeleton {
+    @apply bg-[#313131] overflow-hidden my-2 mx-0 rounded;
+  }
+  .card {
+    @apply w-[160px] h-[210px];
+  }
+  .skeletonTitle {
+    @apply w-[120px] h-[25px];
+  }
+  .skeletonSpan {
+    @apply w-[60px] h-[20px];
+  }
+  .cardTitle {
+    @apply w-[160px] h-[20px] my-2;
+  }
+  .container {
+    @apply relative;
+  }
+  .text {
+    @apply w-[200px] h-[240px] text-white;
+  }
+  .skelebtn {
+    @apply h-[2rem] w-[8rem]
+  }
+  .mangapage {
+    @apply w-[320px] my-10 h-[750px] md:w-[400px] lg:w-[550px] xl:w-[650px]
+  }
+  
+}
+
+/* css for skeleton and flip card */
+
+.image {
+  opacity: 1;
+  transition: 0.5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container:hover .image {
+  opacity: 0.2;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.shimmer-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: loading 2.5s infinite;
+}
+.shimmer {
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  box-shadow: 0 0 30px 30px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-150%);
+  }
+  50% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
