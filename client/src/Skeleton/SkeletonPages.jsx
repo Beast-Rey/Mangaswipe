@@ -3,7 +3,7 @@ import SkeletonElement from "./SkeletonElement";
 
 const SkeletonPages = () => {
   return (
-    <div className="w-[90%] lg:w-[85%] my-20 xl:w-[69%] mx-auto">
+    <div className="container mx-auto">
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         <div>
         <SkeletonElement type="card" />

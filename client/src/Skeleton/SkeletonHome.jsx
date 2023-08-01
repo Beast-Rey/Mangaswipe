@@ -3,7 +3,7 @@ import Shimmer from './Shimmer'
 
 const SkeletonHome= () => {
   return (
-    <div className="w-[90%] lg:w-[85%] xl:w-[69%] mx-auto">
+    <div className="container mx-auto">
       <div className="flex justify-between my-4">
         <SkeletonElement type="skeletonTitle"/>
         <SkeletonElement type="skeletonSpan"/>
