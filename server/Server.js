@@ -13,6 +13,7 @@ app.use(cors())
 app.use(morgan('dev'))
 
 app.use('/', require('./Routes/MangaRoutes'))
+app.use('/user', require('./Routes/AuthRoutes'))
 
 function Server() {
     try {
