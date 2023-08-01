@@ -14,3 +14,4 @@ export default function CustomTitle({ title }) {
         </div>
     )
 }
+

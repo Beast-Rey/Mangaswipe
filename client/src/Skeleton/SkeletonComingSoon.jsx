@@ -5,7 +5,7 @@ const SkeletonComingSoon = () => {
   return (
     <div className="w-[90%] lg:w-[85%] xl:w-[69%] my-12 mx-auto">
       <div className="flex justify-between my-4">
-        <SkeletonElement type="skeletonTitle"/>
+        <h1 className="mangaHead">Loading &rarr;</h1>
         <SkeletonElement type="skeletonSpan"/>
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">

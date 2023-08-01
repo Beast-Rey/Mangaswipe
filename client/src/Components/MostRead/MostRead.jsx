@@ -20,7 +20,7 @@ const MostRead = () => {
   }
 
   return (
-    <section className="w-[100%] mx-auto lg:w-[85%] xl:w-[69%] my-14">
+    <section className="container mx-auto my-14">
       <div className="w-[90%] mx-auto lg:w-[100%] flex justify-between">
         <h1 className="mangaHead">
           Most Read Manga <span>&#187;</span>

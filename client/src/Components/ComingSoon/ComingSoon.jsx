@@ -2,6 +2,7 @@ import axios from "../../../axios/MangaFinder";
 import { Link} from "react-router-dom";
 import { useQuery } from "react-query";
 import SkeletonComingSoon from "../../Skeleton/SkeletonComingSoon";
+import CustomTitle from "../CustomComponents/CustomTitle";
 
 
 const ComingSoon = () => {
@@ -10,19 +11,15 @@ const ComingSoon = () => {
     return result.data.data;
   };
 
-  const { data: coming } = useQuery("comingpage", FetchComingSoon);
+  const { data: coming, isLoading } = useQuery("comingpage", FetchComingSoon);
 
+  if(isLoading) {
+    return <SkeletonComingSoon />
+  }
 
   return (
-    <section className="w-[90%] lg:w-[85%] xl:w-[69%] my-12 mx-auto">
-      <div className="font-fred flex justify-between w-[90%] md:w-[90%] mx-auto lg:w-[100%]">
-        <h1 className="cursor-pointer mb-4 border-l-4 border-[#EFC416] indent-[4px] font-bold w-fit transition duration-1000 ease-out hover:ease-in hover:bg-[#EFC416] hover:w-fit">Coming Soon &rarr;</h1>
-        <Link to="/comingsoon">
-          <span className="underline decoration-[#EFC416] decoration-2 underline-offset-8 cursor-pointer">
-            View All
-          </span>
-        </Link>
-      </div>
+    <section className="container my-12 mx-auto">
+      <CustomTitle title={'Coming Soon'}/>
       <div className="bg-white dark:bg-black drop-shadow-sm rounded-lg">
         {coming &&
           coming.map((item) => {

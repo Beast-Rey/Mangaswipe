@@ -27,7 +27,7 @@ const OnGoingRelease = () => {
   }
 
   return (
-    <section className="w-[90%] mx-auto lg:w-[85%] xl:w-[69%] my-20">
+    <section className="container mx-auto my-20">
       <div className="flex justify-between">
         <h1 className="mangaHead">
           New OnGoing Release <span>&#187;</span>

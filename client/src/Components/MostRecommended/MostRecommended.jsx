@@ -20,7 +20,7 @@ const MostRecommended = () => {
   }
 
   return (
-    <section className="w-[90%] lg:w-[85%] xl:w-[69%] mx-auto">
+    <section className="container mx-auto">
       <div className="flex justify-between my-4">
         <h1 className="mangaHead">Most Recommended &rarr;</h1>
         <Link to="/recommended">
