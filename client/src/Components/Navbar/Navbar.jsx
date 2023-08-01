@@ -1,16 +1,13 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useRef, useContext } from "react";
-import { Themecontext } from "../../Context/Themecontext";
+import { useState, useEffect, useRef } from "react";
 import axios from "../../../axios/MangaFinder";
-import LogoLight from "../../assets/images/whitenyellow.png";
-import LogoDark from "../../assets/images/blackandyellow.png";
 import Search from "../Search/Search";
+import { ChangeLogo } from "../CustomComponents/ChangeLogo";
+import { ThemeChange } from "../CustomComponents/ChangeTheme";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [openn, setOpenn] = useState(false);
-  const { theme, setTheme } = useContext(Themecontext);
-  const [mounted, setMounted] = useState(false);
   const [data, setData] = useState([]);
   const [message, setMessage] = useState();
 
@@ -45,67 +42,51 @@ const Navbar = () => {
     search(e.target.value);
   };
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const ChangeLogo = () => {
-    if (!mounted) return null;
-
-    if (theme === "light") {
-      return (
-        <img src={LogoDark} alt="MangaSwipe" className="h-[24px] w-[150px]" />
-      );
-    } else {
-      return (
-        <img src={LogoLight} alt="MangaSwipe" className="h-[24px] w-[150px]" />
-      );
-    }
-  };
-
-  const renderThemeChanger = () => {
-    if (!mounted) return null;
-
-    if (theme === "light") {
-      return (
-        <i className="fa-solid fa-sun" onClick={() => setTheme("dark")}></i>
-      );
-    } else {
-      return (
-        <i className="fa-solid fa-moon" onClick={() => setTheme("light")}></i>
-      );
-    }
-  };
 
   let domNode = useClickOutside(() => {
     setData(false);
   });
 
+  const NavLinks = [
+    {
+      link: '/',
+      title: 'Home'
+    },
+    {
+      link: '/',
+      title: 'mobile App'
+    },
+    {
+      link: '/',
+      title: 'Join Discord'
+    },
+    {
+      link: '/',
+      title: 'Request A Scan'
+    },
+  ]
+
+
   return (
     <header>
-      <nav className="font-bold h-[4.5rem] font-fred flex justify-between p-6 bg-[#FFFFFF] drop-shadow-2xl  text-black xl:px-60 dark:bg-[#313131] dark:text-white">
+      <nav className="font-bold h-[4.5rem] font-fred flex justify-between py-6 bg-manga-white drop-shadow-2xl  text-black dark:bg-manga-black dark:text-white">
         {/* logo and navlinks */}
         <div className="flex">
-          <Link to="/">{ChangeLogo()}</Link>
+          <Link to="/">
+            <ChangeLogo />
+          </Link>
           <div className="hidden lg:flex lg:ml-12 lg:space-x-4 text-base">
-            <Link to="/" className="hoverEffect">
-              Home
-            </Link>
-            <Link to="/" className="hoverEffect">
-              Mobile App
-            </Link>
-            <Link to="/" className="hoverEffect">
-              Join Discord
-            </Link>
-            <Link to="/" className="hoverEffect">
-              Request A Scan
-            </Link>
+            {openn && NavLinks.map((links, i) => (
+              <Link to={`${links.link}`} className="hover:text-manga-yellow" key={i}>{links.title}</Link>
+            ))}
           </div>
         </div>
 
         {/* searchbar and user */}
         <div ref={domNode} className="lg:flex xl:ml-16">
-          <button className="mr-6 mt-1">{renderThemeChanger()}</button>
+          <button className="mr-6 mt-1">
+            <ThemeChange />
+          </button>
           <input
             type="text"
             placeholder="Search"
@@ -126,18 +107,18 @@ const Navbar = () => {
                 </button>
               </Link>
               <Link to="/register" className="mx-auto">
-                <button className="rounded-full bg-[#EFC416] w-[14rem] lg:w-[8rem] h-[2rem]">
+                <button className="rounded-full bg-manga-yellow w-[14rem] lg:w-[8rem] h-[2rem]">
                   Register
                 </button>
               </Link>
             </div>
           )}
           <i
-            className="fa-solid fa-bars fa-xl mx-2 lg:hidden cursor-pointer hover:text-[#EFC416]"
+            className="fa-solid fa-bars fa-xl mx-2 lg:hidden cursor-pointer hover:text-manga-yellow"
             onClick={() => setOpenn(!openn)}
           ></i>
           {openn && (
-            <div className="bg-[#FFFFFF] dark:bg-[#313131] absolute left-0 h-fit w-full mt-3 border-t-[1px] lg:hidden">
+            <div className="bg-manga-white dark:bg-manga-black absolute left-0 h-fit w-full mt-3 border-t-[1px] lg:hidden">
               <input
                 type="text"
                 placeholder="Search"
@@ -145,18 +126,9 @@ const Navbar = () => {
                 onChange={handlechange}
               />
               <div className="flex flex-col space-y-3 align-middle text-left ml-8 mb-8">
-                <Link to="/" className="hoverEffect">
-                  Home
-                </Link>
-                <Link to="/" className="hoverEffect">
-                  Mobile App
-                </Link>
-                <Link to="/" className="hoverEffect">
-                  Join Discord
-                </Link>
-                <Link to="/" className="hoverEffect">
-                  Request A Scan
-                </Link>
+                {NavLinks.map((links, i) => (
+                  <Link to={`${links.link}`} className="hover:text-manga-yellow" key={i}>{links.title}</Link>
+                ))}
               </div>
             </div>
           )}
