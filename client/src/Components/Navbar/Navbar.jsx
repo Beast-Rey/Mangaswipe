@@ -68,10 +68,10 @@ const Navbar = () => {
 
 
   return (
-    <header>
-      <nav className="font-bold h-[4.5rem] font-fred flex justify-between py-6 bg-manga-white drop-shadow-2xl  text-black dark:bg-manga-black dark:text-white">
-        {/* logo and navlinks */}
-        <div className="flex">
+      <nav className="font-bold h-[4.5rem] font-fred py-6 bg-manga-white drop-shadow-2xl  text-black dark:bg-manga-black dark:text-white">
+      <div className="container mx-auto flex items-center justify-between">
+          {/* logo and navlinks */}
+          <div className="flex">
           <Link to="/">
             <ChangeLogo />
           </Link>
@@ -96,7 +96,7 @@ const Navbar = () => {
           {message ? <Search data={data} /> : ""}
 
           <i
-            className="fa-solid fa-user fa-xl mx-2 cursor-pointer lg:mx-6 lg:mt-4 hover:text-[#EFC416]"
+            className="fa-solid fa-user fa-lg mx-2 cursor-pointer lg:mx-6 lg:mt-4 hover:text-[#EFC416]"
             onClick={() => setOpen(!open)}
           ></i>
           {open && (
@@ -114,7 +114,7 @@ const Navbar = () => {
             </div>
           )}
           <i
-            className="fa-solid fa-bars fa-xl mx-2 lg:hidden cursor-pointer hover:text-manga-yellow"
+            className="fa-solid fa-bars mt-1 fa-xl mx-2 lg:hidden cursor-pointer hover:text-manga-yellow"
             onClick={() => setOpenn(!openn)}
           ></i>
           {openn && (
@@ -133,8 +133,8 @@ const Navbar = () => {
             </div>
           )}
         </div>
+      </div>
       </nav>
-    </header>
   );
 };
 

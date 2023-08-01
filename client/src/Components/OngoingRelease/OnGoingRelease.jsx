@@ -3,6 +3,7 @@ import axios from "../../../axios/MangaFinder";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import SkeletonOngoing from "../../Skeleton/SkeletonOngoing";
+import CustomTitle from "../CustomComponents/CustomTitle";
 
 const OnGoingRelease = () => {
   const [pages, SetPages] = useState(5);
@@ -28,14 +29,7 @@ const OnGoingRelease = () => {
 
   return (
     <section className="container mx-auto my-20">
-      <div className="flex justify-between">
-        <h1 className="mangaHead">
-          New OnGoing Release <span>&#187;</span>
-        </h1>
-        <Link to="/ongoing">
-          <span className="mangaSpan">View All</span>
-        </Link>
-      </div>
+     <CustomTitle title={'New OnGoing Release'}/>
 
       {going &&
         going.slice(0, pages).map((item) => {

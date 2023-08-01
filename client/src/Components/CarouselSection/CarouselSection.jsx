@@ -28,8 +28,6 @@ const sliderData = [
 ]
 
 const CarouselSection = () => {
-
-  console.log(sliderData)
   const options = { delay: 4000 }
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay(options)]);
   return (

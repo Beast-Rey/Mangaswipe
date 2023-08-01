@@ -2,7 +2,7 @@ import axios from "../../../axios/MangaFinder";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import SkeletonGrid from "../../Skeleton/SkeletonGrid";
-
+import CustomTitle from '../CustomComponents/CustomTitle'
 const MostRecommended = () => {
   const FetchRecommended = async () => {
     const result = await axios.get("/recommend");
@@ -21,14 +21,7 @@ const MostRecommended = () => {
 
   return (
     <section className="container mx-auto">
-      <div className="flex justify-between my-4">
-        <h1 className="mangaHead">Most Recommended &rarr;</h1>
-        <Link to="/recommended">
-          <span className="underline decoration-[#EFC416] decoration-2 underline-offset-8 cursor-pointer">
-            View All
-          </span>
-        </Link>
-      </div>
+     <CustomTitle title={'Most Recommended'}/>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {Recommended &&
           Recommended.map((manga) => {

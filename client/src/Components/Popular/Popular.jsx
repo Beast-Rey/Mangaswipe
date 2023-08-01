@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import axios from "../../../axios/MangaFinder";
 import SkeletonGrid from "../../Skeleton/SkeletonGrid";
+import CustomTitle from "../CustomComponents/CustomTitle";
 
 const Popular = () => {
   const FetchPopular = async () => {
@@ -17,15 +18,8 @@ const Popular = () => {
   }
 
   return (
-    <section className="w-[90%] lg:w-[85%] xl:w-[69%] mx-auto">
-      <div className="flex justify-between my-4">
-        <h1 className="mangaHead">Popular This Week &rarr;</h1>
-        <Link to="/popular">
-          <span className="underline decoration-[#EFC416] decoration-2 underline-offset-8 cursor-pointer">
-            View All
-          </span>
-        </Link>
-      </div>
+    <section className="container mx-auto">
+      <CustomTitle title={'Popular This Week'}/>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {Popular &&
           Popular.map((manga) => {

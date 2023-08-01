@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
+import CustomTitle from '../CustomComponents/CustomTitle'
 import axios from "../../../axios/MangaFinder";
 import MostReadGrid from "./MostReadGrid";
 import SkeletonGrid from '../../Skeleton/SkeletonGrid'
@@ -21,16 +22,7 @@ const MostRead = () => {
 
   return (
     <section className="container mx-auto my-14">
-      <div className="w-[90%] mx-auto lg:w-[100%] flex justify-between">
-        <h1 className="mangaHead">
-          Most Read Manga <span>&#187;</span>
-        </h1>
-        <Link to="/read">
-          <span className="underline decoration-[#EFC416] decoration-2 underline-offset-8 cursor-pointer">
-            View All
-          </span>
-        </Link>
-      </div>
+      <CustomTitle title={'Most Read Manga'}/>
       <div className="pt-1 lg:pt-0 text-black dark:text-white mt-8 md:flex md:w-[90%] mx-auto rounded-lg lg:w-[85%] xl:w-[100%] bg-[#EFC416]">
         <div className="w-[90%] md:w-[50%] h-[516px] text-center space-y-3 rounded-lg m-4 bg-[#F3F4F6] dark:bg-[#131415] pt-[20px]">
         {complete &&
