@@ -18,12 +18,13 @@ import RecommendedList from "./pages/RecommendedList.jsx";
 import ComingSoonList from "./pages/ComingSoonList.jsx";
 import NotFound from './Components/NotFound/NotFound'
 import {Navigate} from 'react-router-dom';
+import Layout from '../src/Components/Layout/Layout.jsx'
 
 const App = () => {
   return (
-    <>
       <Routes>
-        <Route path="/" element={<Home />} />
+       <Route path="/" element={<Layout />}>
+       <Route index element={<Home />} />
         <Route path="/manga/chapter/:id" element={<Manga />} />
         <Route path="manga/:id/chapter" element={<Chapter />} />
         <Route path="/login" element={<Login />} />
@@ -41,9 +42,8 @@ const App = () => {
         <Route path="/comingsoon" element={<ComingSoonList />} />
         <Route path="/404" element={<NotFound />} />
         <Route path='*' element={<Navigate to="/404" replace />} />
+       </Route>
       </Routes>
-        
-    </>
   );
 };
 

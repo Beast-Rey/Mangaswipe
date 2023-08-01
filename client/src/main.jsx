@@ -5,7 +5,6 @@ import './index.css'
 import {
   BrowserRouter,
 } from "react-router-dom";
-import Layout from './Components/Layout/Layout';
 import {ThemeProvider} from './Context/Themecontext'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import ScrollToTop from './utils/ScrollToTop';
@@ -18,12 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <QueryClientProvider client={queryClient}>
     <ThemeProvider>
     <BrowserRouter>
-    <Layout>
     <ScrollToTop />
     <HelmetProvider>
     <App />
    </HelmetProvider>
-    </Layout>
     </BrowserRouter>
     </ThemeProvider>
     </QueryClientProvider>
