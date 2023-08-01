@@ -1,26 +1,38 @@
 import { Link } from "react-router-dom";
 
+
+const footerLinks = [
+  {
+    link: '/about-us',
+    title: 'About us'
+  },
+  {
+    link: '/contact-us',
+    title: 'Contact Us'
+  },
+  {
+    link: '/terms-of-service',
+    title: 'Terms of service'
+  },
+  {
+    link: '/privacy-policy',
+    title: 'Privacy Policy'
+  },
+  {
+    link: '/dcma',
+    title: 'DMCA'
+  },
+]
+
 const FooterLinks = () => {
   return (
     <div className="flex space-x-10 lg:mx-auto lg:space-x-40">
-      <div className="space-y-1">
-        <Link to="/about-us">
-          <p className="hoverEffect">About us</p>
-        </Link>
-        <Link to="/contact-us">
-          <p className="hoverEffect">Contact Us</p>
-        </Link>
-      </div>
-      <div className="space-y-1">
-        <Link to="/terms-of-service">
-          <p className="hoverEffect">Terms of service</p>
-        </Link>
-        <Link to="/privacy-policy">
-          <p className="hoverEffect">Privacy Policy</p>
-        </Link>
-        <Link to="/dmca">
-          <p className="hoverEffect">DMCA</p>
-        </Link>
+      <div className="lg:grid lg:grid-cols-2 lg:gap-x-10">
+        {footerLinks.map((links) => (
+          <Link to={`{links.link}`} key={links.title} className="lg:py-2">
+            <p className="hover:text-manga-yellow">{links.title}</p>
+          </Link>
+        ))}
       </div>
     </div>
   );

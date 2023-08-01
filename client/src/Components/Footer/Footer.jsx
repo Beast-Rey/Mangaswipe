@@ -27,7 +27,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#FFFFFF] drop-shadow-2xl text-black font-normal h-56 px-8 flex flex-col justify-around align-middle lg:flex-row-reverse lg:py-20 lg:px-32 xl:px-60 dark:bg-[#313131] dark:text-white">
+    <footer className="bg-manga-white drop-shadow-2xl text-black font-normal h-56 px-8 flex flex-col justify-around align-middle lg:flex-row-reverse lg:py-20 lg:px-32 xl:px-60 dark:bg-manga-black dark:text-white">
       <FooterLinks />
       <div>
         <div>

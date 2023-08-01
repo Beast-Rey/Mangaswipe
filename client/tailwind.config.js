@@ -12,7 +12,13 @@ module.exports = {
     fontFamily: {
       'fred': ['Open Sans', 'sans-serif']
     },
-    extend: {},
+    extend: {
+      colors: {
+        "manga-yellow": "#EFC416",
+        "manga-white": "#FFFFFF",
+        "manga-black": "#313131"
+      }
+    },
   },
   plugins: [
     require('@tailwindcss/line-clamp'),
