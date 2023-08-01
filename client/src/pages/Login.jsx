@@ -1,8 +1,35 @@
 import { Link } from 'react-router-dom'
 import {Helmet} from 'react-helmet-async'
 import testimage1 from "../assets/images/anime.jpg";
+import { useState } from 'react';
+import axios from '../../axios/MangaFinder'
+import {useNavigate} from 'react-router-dom'
+import { toast } from 'react-toastify';
 
 const Login = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    if(email === '' || password === '' ) {
+      toast.error('input cannot be empty!!')
+      return
+    }
+    try {
+      const response = await axios.post(`/user/login`, {
+        email, password
+      })
+      if(response) {
+        toast.success("Loggged In!!")
+        navigate('/')
+      }
+    } catch (error) {
+      toast.error("something went wrong with login!!")
+    }
+  }
+
   return (
     <>
     <Helmet>
@@ -22,20 +49,19 @@ const Login = () => {
           </p>
         </div>
         <form className="form__style">
-          <input type="text" placeholder="Name" className="form__input" />
+          <input type="text" placeholder="Email" className="form__input" 
+          value={email} onChange={(e) => setEmail(e.target.value)}/>
 
-          <input type="text" placeholder="Password" className="form__input" />
+          <input type="password" placeholder="Password" className="form__input" 
+          value={password} onChange={(e) => setPassword(e.target.value)}/>
           <div className="mt-4 space-y-3 space-x-2">
-            <button className="form__btn1">
+            <button className="form__btn1" onClick={handleSubmit}>
               Sign In
             </button>
             <Link to="/register">
-              <button className="form__btn2">
+              <button type='submit' className="form__btn2">
                 Sign up ?
               </button>
-            </Link>
-            <Link to="/reset">
-              <p className="mt-4 cursor-pointer">Forgot Password?</p>
             </Link>
           </div>
         </form>

@@ -1,8 +1,37 @@
 import {Link} from 'react-router-dom'
 import testimage1 from '../assets/images/anime.jpg';
 import {Helmet} from 'react-helmet-async'
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import axios from '../../axios/MangaFinder'
+import { toast } from 'react-toastify';
 
 const Register = () => {
+  const [email, setEmail] = useState("")
+  const [name, setName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+    if(email === '' || name === '' || password === '' || lastName === '') {
+      toast.error('input cannot be empty!!')
+      return
+    }
+    try {
+      const response = await axios.post(`/user/create`, {
+        email, password, lastName, name
+      })
+      
+      if(response) {
+        toast.success('Registerd Succesfully!!')
+        navigate('/')
+      }
+    } catch (error) {
+      toast.error("failed to register!!")
+    }
+  }
   return (
     <>
     <Helmet>
@@ -22,27 +51,23 @@ const Register = () => {
           </p>
         </div>
         <form className="form__style">
-          <input type="text" placeholder="Name" className="form__input" />
+          <input type="text" placeholder="Name" className="form__input"  value={name} onChange={(e) => setName(e.target.value)}/>
 
-          <input type="text" placeholder="LastName" className="form__input" />
+          <input type="text" placeholder="LastName" className="form__input"  value={lastName} onChange={(e) => setLastName(e.target.value)}/>
 
-          <input type="text" placeholder="Email" className="form__input" />
+          <input type="text" placeholder="Email" className="form__input"  value={email} onChange={(e) => setEmail(e.target.value)}/>
 
-          <input type="text" placeholder="Password" className="form__input" />
+          <input type="password" placeholder="Password" className="form__input"  value={password} onChange={(e) => setPassword(e.target.value)}/>
 
-          <input type="text" placeholder="Confirm Password" className="form__input" />
 
           <div className="mt-4 space-y-3 space-x-2">
-            <button className="form__btn1">
+            <button className="form__btn1" type='submit' onClick={handleSubmit}>
               Sign Up
             </button>
             <Link to="/login">
               <button className="form__btn2">
                 Sign in ?
               </button>
-            </Link>
-            <Link to="/reset">
-              <p className="mt-4 cursor-pointer">Forgot Password?</p>
             </Link>
           </div>
         </form>

@@ -9,6 +9,9 @@ import {ThemeProvider} from './Context/Themecontext'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import ScrollToTop from './utils/ScrollToTop';
 import { HelmetProvider } from 'react-helmet-async'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const queryClient = new QueryClient()
 
@@ -20,6 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <ScrollToTop />
     <HelmetProvider>
     <App />
+    <ToastContainer />
    </HelmetProvider>
     </BrowserRouter>
     </ThemeProvider>

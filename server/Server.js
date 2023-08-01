@@ -12,8 +12,10 @@ app.use(express.json())
 app.use(cors())
 app.use(morgan('dev'))
 
-app.use('/', require('./Routes/MangaRoutes'))
+
 app.use('/user', require('./Routes/AuthRoutes'))
+app.use('/', require('./Routes/MangaRoutes'))
+
 
 function Server() {
     try {
