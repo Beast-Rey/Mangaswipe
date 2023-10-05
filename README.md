@@ -1,11 +1,14 @@
-## Mangaswipe
+## Mangaswipe Project
+Full Stack MERN Application.
 
-## built with
-- React js
-- Tailwind css
-- Node Js
-- Express Js
-- Mongo DB
+## Tech Stack
+
+**Client:** React Js, Tailwind Css, Vite
+
+**Server:** Node Js, Express Js, Mongo
 
 ## Demo
-Preview - https://chic-pika-a6813d.netlify.app/
+
+Live: https://chic-pika-a6813d.netlify.app/
+
+
